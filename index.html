@@ -179,13 +179,15 @@
                                 </div>
                             </div>             
                             <div class="row row-res">
-                                 <div class="offset-sm-1 col-md-4">
-                                     <button class="btn btn-primary">Reserve</button>
-                                 </div>
-                                 <div class="offset-sm-1 col-md-4">
-                                     <button class="btn btn-basic" data-dismiss="modal">Cancel</button>
-                                 </div>
-                             </div>
+                                <div class="btn-group">
+                                     <div class="offset-sm-1 col-md-4">
+                                         <button class="btn btn-primary">Reserve</button>
+                                     </div>
+                                     <div class="offset-sm-1 col-md-4">
+                                         <button class="btn btn-basic" data-dismiss="modal">Cancel</button>
+                                     </div>
+                                </div>
+                            </div>
                                </div> 
                             </div>    
                        </div>
@@ -238,14 +240,11 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
-                    <div class="btn-group" id='carouselButtons'>
-                        <button class="btn btn-danger btn-small" id="carousel-pause">
+                   
+                        <button class="btn btn-danger btn-small" id="carousel-button">
                             <span class="fa fa-pause"></span>
                         </button>
-                        <button class="btn btn-danger btn-small" id="carousel-play">
-                            <span class="fa fa-play"></span>
-                        </button>
-                    </div>
+                       
                 </div>
             </div>
         </div>
@@ -308,12 +307,21 @@
     <script >
         $(document).ready(function(){
             $("#mycarousel").carousel({interval: 2000});
-            $("#carousel-pause").click(function(){
+            $("#carousel-button").click(function(){
+                if ($("#carousel-button").children("span").hasClass("fa-pause")){
                 $("#mycarousel").carousel("pause");
-            });
-            $("#carousel-play").click(function(){
+                $("#carousel-button").children("span").removeClass("fa-pause");
+                $("#carousel-button").children("span").addClass("fa-play");
+                }
+
+                else if ($("#carousel-button").children("span").hasClass("fa-play")){
                 $("#mycarousel").carousel("cycle");
+                $("#carousel-button").children("span").removeClass("fa-play");
+                $("#carousel-button").children("span").addClass("fa-pause");
+                }
+
             });
+           
         });
     </script>
     
